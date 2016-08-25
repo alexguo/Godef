@@ -100,6 +100,11 @@ to install them.')
         gopath = settings.get("gopath", os.getenv('GOPATH'))
         goroot = settings.get("goroot", os.getenv('GOROOT'))
 
+        project_setting = sublime.active_window().active_view().settings().get("Godef")
+
+        gopath = project_setting.get("gopath", gopath)
+        goroot = project_setting.get("goroot", goroot)
+
         if self.gopath != gopath or self.goroot != goroot:
             print('[Godef]INFO: settings change, reload conf')
             self.gopath = gopath
